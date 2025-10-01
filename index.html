@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matias - 18 Anos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+    body {
+        font-family: 'Georgia', serif;
+        background: #000000;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Galáxia de fundo */
+    .galaxy {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at center, #1a1a2e 0%, #000000 100%);
+        pointer-events: none;
+    }
+
+    .stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .star {
+        position: absolute;
+        background: #FFD700;
+        border-radius: 50%;
+        animation: twinkle 3s infinite;
+        box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+    }
+
+    @keyframes twinkle {
+        0%, 100% { 
+            opacity: 0.3; 
+            transform: scale(1);
+            box-shadow: 0 0 5px #FFD700;
+        }
+        50% { 
+            opacity: 1; 
+            transform: scale(1.5);
+            box-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700;
+        }
+    }
+
+    .shooting-star {
+        position: fixed;
+        height: 2px;
+        background: linear-gradient(90deg, #FFD700, transparent);
+        animation: shoot 3s linear infinite;
+    }
+
+    @keyframes shoot {
+        0% {
+            transform: translateX(0) translateY(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(-1000px) translateY(500px);
+            opacity: 0;
+        }
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .invite-card {
+        background: rgba(0, 0, 0, 0.8);
+        border: 3px solid #FFD700;
+        border-radius: 30px;
+        padding: 60px 40px;
+        box-shadow: 0 0 50px rgba(212, 175, 55, 0.5), 
+                    inset 0 0 30px rgba(212, 175, 55, 0.1);
+        text-align: center;
+        margin-top: 50px;
+        animation: fadeInUp 1.5s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .invite-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        animation: rotate 10s linear infinite;
+    }
+
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .golden-line {
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #FFD700, transparent);
+        margin: 30px 0;
+        box-shadow: 0 0 10px #FFD700;
+        animation: shimmer 2s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+    }
+
+    h1 {
+        font-size: 4em;
+        color: #FFD700;
+        margin-bottom: 10px;
+        animation: glow 2s ease-in-out infinite;
+        text-shadow: 0 0 20px #FFD700, 
+                     0 0 40px #FFD700,
+                     0 0 60px #FFD700;
+        font-weight: bold;
+        letter-spacing: 8px;
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes glow {
+        0%, 100% { 
+            text-shadow: 0 0 20px #FFD700, 
+                         0 0 40px #FFD700,
+                         0 0 60px #FFD700;
+        }
+        50% { 
+            text-shadow: 0 0 30px #FFD700, 
+                         0 0 60px #FFD700,
+                         0 0 90px #FFD700,
+                         0 0 120px #FFD700;
+        }
+    }
+
+    .age {
+        font-size: 8em;
+        font-weight: bold;
+        color: #FFD700;
+        margin: 20px 0;
+        animation: pulse 2s ease-in-out infinite;
+        text-shadow: 0 0 30px #FFD700,
+                     0 0 60px #FFD700,
+                     0 0 90px rgba(212, 175, 55, 0.8);
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes pulse {
+        0%, 100% { 
+            transform: scale(1);
+            filter: brightness(1);
+        }
+        50% { 
+            transform: scale(1.05);
+            filter: brightness(1.3);
+        }
+    }
+
+    .subtitle {
+        font-size: 1.8em;
+        color: #FFD700;
+        margin-bottom: 40px;
+        font-style: italic;
+        text-shadow: 0 0 10px #FFD700;
+        position: relative;
+        z-index: 1;
+    }
+
+    .info-box {
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+        border: 2px solid #FFD700;
+        color: #FFD700;
+        padding: 40px;
+        border-radius: 20px;
+        margin: 40px 0;
+        animation: slideIn 1s ease 0.5s both;
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.3),
+                    inset 0 0 20px rgba(212, 175, 55, 0.1);
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .info-item {
+        margin: 20px 0;
+        font-size: 1.4em;
+        text-shadow: 0 0 5px #FFD700;
+    }
+
+    .info-item strong {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 1.2em;
+        letter-spacing: 2px;
+    }
+
+    .emoji {
+        font-size: 1.8em;
+        margin-right: 15px;
+        filter: drop-shadow(0 0 5px #FFD700);
+    }
+
+    .message {
+        font-size: 1.4em;
+        color: #FFD700;
+        margin: 40px 0;
+        line-height: 1.8;
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        font-style: italic;
+        position: relative;
+        z-index: 1;
+    }
+
+    .footer {
+        margin-top: 50px;
+        color: #FFD700;
+        font-size: 1.3em;
+        text-shadow: 0 0 10px #FFD700;
+        position: relative;
+        z-index: 1;
+    }
+
+    .sparkle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #FFD700;
+        border-radius: 50%;
+        animation: sparkleFloat 4s ease-in-out infinite;
+        box-shadow: 0 0 10px #FFD700;
+    }
+
+    @keyframes sparkleFloat {
+        0%, 100% {
+            transform: translateY(0) translateX(0) scale(1);
+            opacity: 0;
+        }
+        50% {
+            transform: translateY(-100px) translateX(50px) scale(1.5);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        h1 { 
+            font-size: 2.5em;
+            letter-spacing: 4px;
+        }
+        .age { font-size: 5em; }
+        .invite-card { padding: 40px 20px; }
+        .subtitle { font-size: 1.3em; }
+        .info-item { font-size: 1.1em; }
+        .message { font-size: 1.1em; }
+    }
+</style>
+
+
+</head>
+<body>
+    <div class="galaxy"></div>
+    <div class="stars" id="stars"></div>
+
+
+<div class="container">
+    <div class="invite-card">
+        <h1>MATIAS</h1>
+        <div class="golden-line"></div>
+        <div class="age">18</div>
+        <div class="golden-line"></div>
+        <p class="subtitle">Uma noite para celebrar</p>
+
+        <div class="info-box">
+            <div class="info-item">
+                <span class="emoji">✨</span>
+                <strong>DATA:</strong> 18 de Outubro
+            </div>
+            <div class="info-item">
+                <span class="emoji">🌙</span>
+                <strong>DIA:</strong> Sábado
+            </div>
+            <div class="info-item">
+                <span class="emoji">⏰</span>
+                <strong>HORÁRIO:</strong> A definir
+            </div>
+            <div class="info-item">
+                <span class="emoji">📍</span>
+                <strong>LOCAL:</strong> A definir
+            </div>
+        </div>
+
+        <p class="message">
+            Chegou a hora de celebrar 18 anos de vida!<br>
+            Prepare-se para uma noite inesquecível!
+        </p>
+
+        <div class="golden-line"></div>
+
+        <div class="footer">
+            Sua presença será uma honra ⭐
+        </div>
+    </div>
+</div>
+
+<script>
+    // Criar estrelas da galáxia
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 200; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 3 + 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        starsContainer.appendChild(star);
+    }
+
+    // Criar estrelas cadentes
+    function createShootingStar() {
+        const star = document.createElement('div');
+        star.className = 'shooting-star';
+        star.style.width = Math.random() * 100 + 100 + 'px';
+        star.style.top = Math.random() * 50 + '%';
+        star.style.left = Math.random() * 100 + 100 + '%';
+        star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        document.body.appendChild(star);
+
+        setTimeout(() => star.remove(), 3000);
+    }
+
+    setInterval(createShootingStar, 3000);
+
+    // Criar partículas brilhantes
+    const inviteCard = document.querySelector('.invite-card');
+    for (let i = 0; i < 30; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 4 + 's';
+        inviteCard.appendChild(sparkle);
+    }
+</script>
+
+
+</body>
+</html>
